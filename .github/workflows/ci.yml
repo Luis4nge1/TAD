@@ -22,7 +22,6 @@ jobs:
 
       - name: Start the server
         run: |
-          npm run build
           npm start
           curl http://localhost:3000
           sleep 10s
