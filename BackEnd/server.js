@@ -50,8 +50,7 @@ users(app, upload);
 
 //ordersDeliverySockets(io);
 
-server.listen(3000);
-console.log('Aplicacion de NodeJS ' + port+ ' Iniciando...');
+app.listen(3000);
 
 app.get('/', (req, res) => { 
     res.send('Ruta raiz del backend')
@@ -66,6 +65,8 @@ app.use((err, req, res, next) =>{
     console.log(err);
     res.status(err.status || 500).send(err.stack);
 });
+
+console.log('Aplicacion de NodeJS ' + port+ ' Iniciando...');
 
 module.exports = {
     app: app,
