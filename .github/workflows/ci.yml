@@ -27,5 +27,4 @@ jobs:
         run: |
           npm start &
           sleep 90s &
-          pkill -f "npm start
         working-directory: ./BackEnd
