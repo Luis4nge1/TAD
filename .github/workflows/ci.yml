@@ -1,0 +1,39 @@
+name: CI
+
+on: [push]
+
+jobs:
+  standard-checks:
+    name: Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install packages
+        run: npm ci
+        working-directory: ./BackEnd
+
+      - name: Start the server
+        run: npm start
+        working-directory: ./BackEnd
+        background: true
+
+      - name: Wait for server to start
+        run: sleep 10s
+
+      - name: Test server
+        run: curl http://localhost:3000
+
+      - name: Wait before stopping server
+        run: sleep 10s
+
+      - name: Stop server
+        run: kill $(cat /tmp/pidfile)
+        if: always()
