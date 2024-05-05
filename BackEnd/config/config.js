@@ -1,3 +1,4 @@
+require('dotenv').config();
 const promise = require('bluebird');
 const options = {
     promiseLib: promise,
@@ -11,11 +12,11 @@ types.setTypeParser(1114,function(stringValue) {
 });
 
 const databaseConfig = {
-    'host': '127.0.0.1',
-    'port': 5432,
-    'database': 'delivery_db',
-    'user': 'postgres',
-    'password': '123456'
+    'host': process.env.DB_HOST,
+    'port': process.env.PORT,
+    'database': process.env.DATABASE,
+    'user': process.env.USER,
+    'password': process.env.PASS
 }
 
 const db = pgp(databaseConfig);

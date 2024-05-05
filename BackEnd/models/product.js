@@ -32,7 +32,7 @@ Product.create = (product) => {
         product.name,
         product.description,
         product.price,
-        product.image1,
+        "product.image1",
         product.image2,
         product.image3,
         product.id_category,
