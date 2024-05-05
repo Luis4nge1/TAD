@@ -23,6 +23,6 @@ jobs:
       - name: Start the server
         run: |
           npm start &
-          sleep 10s &
+          sleep 90s &
           kill $(cat /tmp/pidfile)
         working-directory: ./BackEnd
