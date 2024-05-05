@@ -5,9 +5,13 @@ const server = http.createServer(app);
 const logger  = require('morgan');
 const cors = require('cors');
 const passport = require('passport');
+const multer = require('multer');
 
 const mercadoPago = require('mercadopago');
 
+const upload = multer({
+    storage: multer.memoryStorage()
+});
 
 const users = require('./routes/usersRoutes');
 
@@ -34,17 +38,17 @@ app.set('port', port);
 */
 
 users(app, upload);
-categories(app, upload);
-products(app, upload);
-address(app);
-orders(app);
-mercadoPagoRoutes(app);
+//categories(app, upload);
+//products(app, upload);
+//address(app);
+//orders(app);
+//mercadoPagoRoutes(app);
 
 /*
 * LLAMANDO A LOS SOCKETS
 */
 
-ordersDeliverySockets(io);
+//ordersDeliverySockets(io);
 
 server.listen(3000, '192.168.42.105' || 'localhost', function() {
     console.log('Aplicacion de NodeJS ' + port+ ' Iniciando...') 
