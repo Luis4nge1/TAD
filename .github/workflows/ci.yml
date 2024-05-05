@@ -14,13 +14,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ./BackEnd
 
       - name: Run ESlint
         run: npm run ci:lint
+        working-directory: ./BackEnd
 
       - name: Start the server
         run: npm start
+        working-directory: ./BackEnd
