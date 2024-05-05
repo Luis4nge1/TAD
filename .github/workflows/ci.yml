@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   standard-checks:
-    name: Init
+    name: Run
     runs-on: ubuntu-latest
 
     steps:
