@@ -27,6 +27,3 @@ jobs:
           sleep 10s
           kill $(cat /tmp/pidfile)
         working-directory: ./BackEnd
-        run: sleep 10s
-        run: kill $(cat /tmp/pidfile)
-        if: always()
