@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  standard-checks:
     name: Deploy to Vercel
     runs-on: ubuntu-latest
 
