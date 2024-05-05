@@ -20,9 +20,12 @@ jobs:
         run: npm ci
         working-directory: ./BackEnd
 
+      - name: Wait for server to run for 10 seconds
+        run: sleep 10s
+
       - name: Start the server
         run: |
           npm start &
           sleep 90s &
-          kill $(cat /tmp/pidfile)
+          pkill -f "npm start
         working-directory: ./BackEnd
