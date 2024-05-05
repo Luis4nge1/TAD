@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   standard-checks:
-    name: Lint
+    name: Init
     runs-on: ubuntu-latest
 
     steps:
