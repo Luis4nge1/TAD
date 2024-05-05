@@ -50,7 +50,7 @@ users(app, upload);
 
 //ordersDeliverySockets(io);
 
-server.listen(3000, 'localhost' || 'localhost', function() {
+server.listen(3000, function() {
     console.log('Aplicacion de NodeJS ' + port+ ' Iniciando...') 
 });
 
