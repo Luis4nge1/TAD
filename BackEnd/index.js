@@ -69,7 +69,8 @@ app.use((err, req, res, next) =>{
 
 console.log('Aplicacion de NodeJS ' + port+ ' Iniciando...');
 
-module.exports = {
+/*module.exports = {
     app: app,
     server: server
-}
+}*/
+module.exports = app;
