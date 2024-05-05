@@ -15,3 +15,4 @@ Frontend/.cxx
 Frontend/local.properties
 Backend/node_modules/
 Backend/.env
+.github
