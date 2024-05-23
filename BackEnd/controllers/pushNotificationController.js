@@ -69,7 +69,7 @@ module.exports = {
         }
 
         const req = https.request(options, (res) => {
-            console.log('Status code Notification', res.statusCode);
+            console.log('Status code Notification ', res.statusCode);
             res.on('data', (d) => {
                 process.stdout.write(d)
             })
