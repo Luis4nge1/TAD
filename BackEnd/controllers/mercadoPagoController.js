@@ -70,14 +70,14 @@ module.exports = {
             console.log('Respuesta de Mercadopago: ', data.response);
             
             return res.status(201).json({
-                message: `El pago se ha realizado correctamente`,
+                message: `El pago se ha realizado correctamente.`,
                 success: true,
                 data: data.response
             });
           }
           else{
             return res.status(501).json({
-                message: `El pago no se ha realizado correctamente`,
+                message: `El pago no se ha realizado correctamente.`,
                 success: false
             });
           }  
