@@ -40,7 +40,7 @@ module.exports = {
             console.log(`Error: ${error}`);
             return res.status(501).json({
                 success: false,
-                message: 'Hubo un error al listar la data',
+                message: 'Hubo un error al listar los datos',
                 error: error
             });
         }
