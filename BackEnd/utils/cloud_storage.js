@@ -30,7 +30,7 @@ module.exports = (file, pathImage, deletePathImage) => {
 
                 fileDelete.delete().then((imageDelete) => {
 
-                    console.log('se borro la imagen con exito')
+                    console.log('se borro la imagen con exito.')
                 }).catch(err => {
                     console.log('Failed to remove photo, error:', err)
                 });
