@@ -48,7 +48,7 @@ module.exports = {
             })
 
             pushNotificationController.sendNotificationToMultipleDevices(tokensString,{
-              title: 'SE HA REALIZADO UNA COMPRA',
+              title: 'SE HA REALIZADO UNA COMPRA SATISFACTORIAMENTE',
               body: 'Revisa tus órdenes para realizar el pedido',
               id_notification: '1'
             });
