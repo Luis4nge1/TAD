@@ -18,7 +18,7 @@ class PaymentsProvider (val token: String) {
     private var paymentsRoutes: PaymentsRoutes? = null
 
     init{
-        val api = ApiRoutes()
+        val api = ApiRoutes.instance
         paymentsRoutes = api.getPaymentsRoutes(token)
     }
 

@@ -28,7 +28,7 @@ class UsersProvider (val token: String? = null) {
     private var usersRoutesToken: UsersRoutes? = null
 
     init{
-        val api = ApiRoutes()
+        val api = ApiRoutes.instance
         usersRoutes = api.getUsersRoutes()
 
         if(token != null){

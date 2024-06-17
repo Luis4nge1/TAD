@@ -55,9 +55,10 @@ class ClientProductsDetailActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         toolbar?.title = product?.name
         toolbar?.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        toolbar?.navigationIcon?.setColorFilter(ContextCompat.getColor(this, R.color.white), PorterDuff.Mode.SRC_OUT)
+        toolbar?.navigationIcon?.setColorFilter(ContextCompat.getColor(this, R.color.white), PorterDuff.Mode.SRC_ATOP)
 
         imageSlider = findViewById(R.id.imageslider)
         textViewName = findViewById(R.id.textview_name)

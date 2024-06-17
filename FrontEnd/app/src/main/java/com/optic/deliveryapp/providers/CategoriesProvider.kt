@@ -16,7 +16,7 @@ class CategoriesProvider (val token: String) {
     private var categoriesRoutes: CategoriesRoutes? = null
 
     init{
-        val api = ApiRoutes()
+        val api = ApiRoutes.instance
         categoriesRoutes = api.getCategoriesRoutes(token)
     }
 

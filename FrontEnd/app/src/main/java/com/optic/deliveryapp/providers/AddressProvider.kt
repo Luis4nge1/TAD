@@ -18,7 +18,7 @@ class AddressProvider (val token: String) {
     private var addressRoutes: AddressRoutes? = null
 
     init{
-        val api = ApiRoutes()
+        val api = ApiRoutes.instance
         addressRoutes = api.getAddressRoutes(token)
     }
 

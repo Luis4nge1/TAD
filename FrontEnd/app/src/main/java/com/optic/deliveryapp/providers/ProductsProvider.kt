@@ -16,7 +16,7 @@ class ProductsProvider (val token: String) {
     private var productsRoutes: ProductsRoutes? = null
 
     init{
-        val api = ApiRoutes()
+        val api = ApiRoutes.instance
         productsRoutes = api.getProductsRoutes(token)
     }
 

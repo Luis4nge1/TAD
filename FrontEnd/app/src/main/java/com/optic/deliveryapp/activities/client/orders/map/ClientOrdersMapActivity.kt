@@ -89,22 +89,6 @@ class ClientOrdersMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     var socket: Socket? = null
 
-    private val locationCallback = object: LocationCallback(){
-        override fun onLocationResult(locationResult: LocationResult) {
-            var lastLocation = locationResult.lastLocation
-            myLocationLatLng = LatLng(lastLocation.latitude, lastLocation.longitude)
-
-            //googleMap?.moveCamera(CameraUpdateFactory.newCameraPosition(
-            //CameraPosition.builder().target(
-            //LatLng(myLocationLatLng?.latitude!!, myLocationLatLng?.longitude!!)
-            //).zoom(15f).build()
-            //))
-            //removeDeliveryMarker()
-            //addDeliveryMarker()
-            Log.d("LOCALIZACION", "Callback: $lastLocation")
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_orders_map)
@@ -157,6 +141,14 @@ class ClientOrdersMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
+    private val locationCallback = object: LocationCallback(){
+        override fun onLocationResult(locationResult: LocationResult) {
+            var lastLocation = locationResult.lastLocation
+            myLocationLatLng = LatLng(lastLocation.latitude, lastLocation.longitude)
+            Log.d("LOCALIZACION", "Callback: $lastLocation")
+        }
+    }
+
     private fun connectSocket(){
         SocketHandler.setSocket()
         socket = SocketHandler.getSocket()
@@ -171,6 +163,23 @@ class ClientOrdersMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 }
             }
+        }
+    }
+
+    private fun drawRoute(){
+
+        if(deliveryLatLng != null){
+            val addressLocation = LatLng(order?.address?.lat!!,order?.address?.lng!!)
+            googleMap?.drawRouteOnMap(
+                getString(R.string.google_map_api_key),
+                source = deliveryLatLng!!,
+                destination = addressLocation,
+                context = this,
+                color = Color.RED,
+                polygonWidth = 10,
+                boundMarkers = false,
+                markers = false
+            )
         }
     }
 
@@ -193,23 +202,6 @@ class ClientOrdersMapActivity : AppCompatActivity(), OnMapReadyCallback {
             return
         }
         startActivity(i)
-    }
-
-    private fun drawRoute(){
-
-        if(deliveryLatLng != null){
-            val addressLocation = LatLng(order?.address?.lat!!,order?.address?.lng!!)
-            googleMap?.drawRouteOnMap(
-                getString(R.string.google_map_api_key),
-                source = deliveryLatLng!!,
-                destination = addressLocation,
-                context = this,
-                color = Color.RED,
-                polygonWidth = 10,
-                boundMarkers = false,
-                markers = false
-            )
-        }
     }
 
     private fun removeDeliveryMarker(){

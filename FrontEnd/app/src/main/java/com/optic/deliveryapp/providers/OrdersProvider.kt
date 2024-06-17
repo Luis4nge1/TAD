@@ -13,7 +13,7 @@ class OrdersProvider (val token: String) {
     private var ordersRoutes: OrdersRoutes? = null
 
     init{
-        val api = ApiRoutes()
+        val api = ApiRoutes.instance
         ordersRoutes = api.getOrdersRoutes(token)
     }
 

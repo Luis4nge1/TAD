@@ -1,5 +1,6 @@
 package com.optic.deliveryapp.api
 
+import android.util.Log
 import com.optic.deliveryapp.routes.AddressRoutes
 import com.optic.deliveryapp.routes.CategoriesRoutes
 import com.optic.deliveryapp.routes.OrdersRoutes
@@ -7,9 +8,15 @@ import com.optic.deliveryapp.routes.PaymentsRoutes
 import com.optic.deliveryapp.routes.ProductsRoutes
 import com.optic.deliveryapp.routes.UsersRoutes
 
-class ApiRoutes {
-    val API_URL = "http://192.168.42.122:3000/api/"
+class ApiRoutes private constructor() {
+    val API_URL = "http://192.168.42.125:3000/api/"
     val retrofit = RetrofitClient()
+
+    companion object {
+        val instance: ApiRoutes by lazy {
+            ApiRoutes()
+        }
+    }
 
     fun getUsersRoutes(): UsersRoutes{
         return retrofit.getClient(API_URL).create(UsersRoutes::class.java)
