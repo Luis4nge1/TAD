@@ -9,7 +9,7 @@ import com.optic.deliveryapp.routes.ProductsRoutes
 import com.optic.deliveryapp.routes.UsersRoutes
 
 class ApiRoutes private constructor() {
-    val API_URL = "http://192.168.42.125:3000/api/"
+    val API_URL = "https://tad-mauve.vercel.app/api/"
     val retrofit = RetrofitClient()
 
     companion object {

@@ -12,7 +12,7 @@ object SocketHandler {
     @Synchronized
     fun setSocket(){
         try{
-            msocket = IO.socket("http://192.168.42.125:3000/orders/delivery")
+            msocket = IO.socket("https://tad-mauve.vercel.app/orders/delivery")
         } catch (e: URISyntaxException){
             Log.d("Error","No se pudo conectar al socket ${e.message}")
         }
