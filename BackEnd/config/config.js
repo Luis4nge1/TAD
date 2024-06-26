@@ -11,13 +11,7 @@ types.setTypeParser(1114,function(stringValue) {
     return stringValue;
 });
 
-const databaseConfig = {
-    'host': process.env.DB_HOST,
-    'port': process.env.PORT,
-    'database': process.env.DATABASE,
-    'user': process.env.USER,
-    'password': process.env.PASS
-}
+const databaseConfig = process.env.POSTGRES_URL;
 
 const db = pgp(databaseConfig);
 
