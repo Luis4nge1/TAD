@@ -7,14 +7,31 @@ const logger  = require('morgan');
 const cors = require('cors');
 const passport = require('passport');
 const multer = require('multer');
-
+const serviceAccount = require('./serviceAccountKey.json');
+const admin = require('firebase-admin');
+const io = require('socket.io')(server);
+const ordersDeliverySockets = require('./sockets/orders_delivery_socket');
 const mercadoPago = require('mercadopago');
+
+mercadoPago.configure ({
+    access_token: 'TEST-8724115554838541-020712-f25bd39c2b5763d862fa281092ee40a8-1673487716',
+  });
+  
+  
+  admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount)
+  });
 
 const upload = multer({
     storage: multer.memoryStorage()
 });
 
 const users = require('./routes/usersRoutes');
+const categories = require('./routes/categoriesRoutes');
+const products = require('./routes/productsRoutes');
+const address = require('./routes/addressRoutes');
+const orders = require('./routes/ordersRoutes');
+const mercadoPagoRoutes = require('./routes/mercadoPagoRoutes');
 
 const port = process.env.PORT || 3000;
 
@@ -39,17 +56,17 @@ app.set('port', port);
 */
 
 users(app, upload);
-//categories(app, upload);
-//products(app, upload);
-//address(app);
-//orders(app);
-//mercadoPagoRoutes(app);
+categories(app, upload);
+products(app, upload);
+address(app);
+orders(app);
+mercadoPagoRoutes(app);
 
 /*
 * LLAMANDO A LOS SOCKETS
 */
 
-//ordersDeliverySockets(io);
+ordersDeliverySockets(io);
 
 app.listen(3000);
 
